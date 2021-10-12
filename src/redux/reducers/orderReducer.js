@@ -18,6 +18,7 @@ const initialState = {
     isPassword: false,
     isEdit: false,
     wrongCode: false,
+    isSuggest: false,
     
     full_name: "",
     phone_number: "",

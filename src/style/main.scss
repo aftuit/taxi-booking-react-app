@@ -149,6 +149,12 @@ html{
                 width: 100%;
                 height: calc(100vh - 168px);
                 overflow-y: auto;
+                @media(max-width: 575px) {
+                    height: calc(100vh - 254px);
+                }
+                @media(max-width: 380px) {
+                    height: calc(100vh - 270px);
+                }
                 
                 &::-webkit-scrollbar{
                     width: 10px;
@@ -173,7 +179,6 @@ html{
                             margin: 0;
                             font-size: 13px;
                             line-height: 14px;
-                            // @media(max-width: )
                         }
                         span{
                             font-size: 13px;
@@ -184,6 +189,14 @@ html{
                     }
                     .card-bottom{
                         margin-top: 15px;
+                        @media(max-width: 450px){
+                            display: block!important;
+                                font-size: 12px !important;
+                            button{
+                                margin: 6px 0 0 0 !important;
+                                width: 100%!important;
+                            }
+                        }
                     }
                 }
             }
@@ -259,6 +272,9 @@ html{
                                 }
                             label{
                                 margin: 0;
+                                @media(max-width: 350px){
+                                    font-size: 10px;
+                                }
                             }
                            .file{
                             width: 180px;
@@ -272,6 +288,15 @@ html{
                             align-items: center;
                             margin-top: 12px;
                             justify-content: center;
+                            @media(max-width: 450px){
+                                width: 150px;
+                            height: 150px;
+                            }
+
+                            @media(max-width: 325px){
+                                width: 125px;
+                                height: 125px;
+                            }
                             div{
                                 font-size: 14px;
                             }
@@ -307,9 +332,10 @@ html{
 
             .order-page-content{
                 img{
-                    width: 85% !important;
+                    width: 100% !important;
+                    height: 85% !important;
                     @media (max-width: 575px) {
-                        width: 50%;
+                        width: 100% !important;
                     }
                 }
             }
@@ -328,4 +354,16 @@ html{
             justify-content: space-between;
         }
     }
+}
+.driver-infos{
+    
+        @media (max-width: 450px) {
+            p{
+                font-size: 12px!important;
+                b{
+                font-size: 12px!important;
+                }
+            }
+        }
+    
 }

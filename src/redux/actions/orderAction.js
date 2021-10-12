@@ -61,16 +61,25 @@ export const moveMainPage = (history) => {
         history.push("/")
     }
 }
-export const clientsOrder = (event, error, values) => {
+export const clientsOrder = (event, error, values) =>  {
     let formDataTime = new FormData();
     formDataTime.append("departure_station", values.departure_station)
     formDataTime.append("arrival_station", values.arrival_station)
     formDataTime.append("departure_time", values.departure_time)
-    return function async(dispatch) {
+    return function async(dispatch, getState) {
         axios.post(API_URL + "/api/filter/", formDataTime)
-            .then(res => {
-               
+            .then(res => {     
                 dispatch(updateState({ suggestions: res.data }))
+                if(getState().order.suggestions === []){
+                    toast.warn("Mos e'lon topilmadi !", {
+                        position: "top-center",
+                    })
+                }
+            })
+            .catch(err => {
+                toast.error("Xatolik yuz berdi !", {
+                    position: "top-center",
+                })
             })
            
     }
@@ -102,12 +111,14 @@ export const checkingPassword = (password, history) => {
         dispatch(updateState({ isPassword: true }))
         axios.get(API_URL + "/api/order/" + password)
         .then(res => {
+            console.log(res.data[0])
             dispatch(updateState({ driver: res.data[0], isPassword: false }))
             res.data.length === 0 ?
             dispatch(updateState({wrongCode: true})):
                 axios.get(API_URL + "/api/passanger/" +  getState().order.driver.id)
                     .then(response => {
                             toast.success("Parol to'g'ri kiritildi !")
+                            console.log(response.data)
                         dispatch(updateState({clients: response.data, wrongCode: false, isEdit: false}))
                         history.push("/driver")
                     })

@@ -87,6 +87,7 @@ const DriverForm = (props) => {
         }
         reader.readAsDataURL(file);
     }
+    
     const activeForm = (id) => {
         setGetID(id)
     }
@@ -189,6 +190,9 @@ const DriverForm = (props) => {
                                 errorMessage="To'ldirilishi majburiy" />
 
                         </div>
+                        {
+                            console.log("props.driver.departure_time", props.driver.departure_time)
+                        }
                         <div className="col-6">
 
                             <AvField

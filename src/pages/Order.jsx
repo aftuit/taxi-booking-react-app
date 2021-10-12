@@ -188,8 +188,9 @@ const Order = (props) => {
             </div>
             <div className="order-page-content">
                 {
-                    props.suggestions.length === 0 ?
-                        <img src="/assets/img/taxi-book.jpg" className="w-75 h-75 d-block mx-auto mt-3" alt="" /> :
+                    props.suggestions === "" ?
+                        <img src="/assets/img/taxi-book.jpg" className="w-100 h-75 d-block mx-auto mt-3" alt="" /> :
+                     
                         props.suggestions.map(suggestion => <InfoCard
                             key={suggestion.id}
                             id={suggestion.id}
